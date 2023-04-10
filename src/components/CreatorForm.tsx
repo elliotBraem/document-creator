@@ -9,15 +9,15 @@ import {
   ModalHeader,
   ModalOverlay,
   Textarea,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import createIdea from "../services/createIdea";
+import createThing from "../services/createThing";
 import Loading from "./Loading";
 
 const IdeaForm = () => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [message, setMessage] = useState<string>("");
@@ -26,15 +26,15 @@ const IdeaForm = () => {
     setTitle(event.target.value);
   };
 
-  const handleDescriptionChange = (event: { target: { value: any } }) => {
-    setDescription(event.target.value);
+  const handleBodyChange = (event: { target: { value: any } }) => {
+    setBody(event.target.value);
   };
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const response = await createIdea({
+    const response = await createThing({
       title,
-      description,
+      body,
     });
     if (response.error) {
       setMessage(response.error);
@@ -43,7 +43,7 @@ const IdeaForm = () => {
       setMessage("successfully created");
       onOpen();
       setTitle("");
-      setDescription("");
+      setBody("");
     }
     setIsLoading(false);
   };
@@ -62,14 +62,14 @@ const IdeaForm = () => {
           mb={2}
         />
         <Textarea
-          placeholder="Description"
-          value={description}
-          onChange={handleDescriptionChange}
+          placeholder="body"
+          value={body}
+          onChange={handleBodyChange}
           mb={4}
         />
         <Button
           onClick={handleSubmit}
-          isDisabled={title.length < 1 || description.length < 1}
+          isDisabled={title.length < 1 || body.length < 1}
         >
           Submit
         </Button>

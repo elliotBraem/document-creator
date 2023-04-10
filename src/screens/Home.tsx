@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import FormBuilder from "../components/IdeaForm";
+import FormBuilder from "../components/CreatorForm";
 import { PreHomeScreenProps } from "../routes/NavigationProps";
 
 const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {

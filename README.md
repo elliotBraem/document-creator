@@ -1,6 +1,6 @@
-# Idea Creator
+# Document Creator
 
-This is the front end for Everything.Create.Idea widget.
+This is the front end for Everything.Create.Document widget.
 
 ```json
 "scripts": {
@@ -16,4 +16,4 @@ This is the front end for Everything.Create.Idea widget.
 
 * Make changes here
 * Build and deploy or use ngrok
-* Put external url in Everything.Create.Idea
+* Put external url in Everything.Create.Document
